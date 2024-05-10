@@ -4,12 +4,7 @@ const {isEmail} = require('validator');
 
 const userSchema = new Schema(
 	{
-		first_name: {
-			type: String,
-			required: [true, 'Please input Your first name'],
-			minlength: [3, 'Your first name should be at least 3 characters long'],
-		},
-		last_name: {
+		full_name: {
 			type: String,
 			required: [true, 'Please input Your last name'],
 			minlength: [3, 'Your last name should be at least 3 characters long'],

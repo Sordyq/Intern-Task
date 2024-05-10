@@ -15,7 +15,7 @@ const registerAccount = async(req, res)=>{
 			req.body.email = req.body.email.toLowerCase();
 		}
 
-		const {email, password, first_name, last_name} = req.body;
+		const {email, password, full_name} = req.body;
 
 		const passwordSecurityOptions = {
 			minLength: 6,
@@ -52,8 +52,7 @@ const registerAccount = async(req, res)=>{
 		user = await userModel.create({
 			email,
 			password: req.body.password,
-			first_name,
-			last_name,
+			full_name,
 			isVerified: false,
 		});
 
@@ -119,8 +118,7 @@ const registerAccount = async(req, res)=>{
 			success: true,
 			data: {
 				email,
-				first_name,
-				last_name,
+				full_name,
 				isVerified: false,
 				token,
 			},
@@ -149,7 +147,7 @@ const loginAccount = async (req, res) => {
 
 		if (!compare) throw new Error('Invalid Credentials');
 		else {
-			const {_id, email, first_name, last_name, isVerified} = result;
+			const {_id, email, full_name, isVerified} = result;
 			const id = _id.toString();
 			const token = jwt.sign(id, process.env.JWT_SECRET);
 
@@ -158,8 +156,7 @@ const loginAccount = async (req, res) => {
 				data: {
 					id: _id,
 					email,
-					first_name,
-					last_name,
+					full_name,
 					isVerified,
 					token,
 				},
@@ -286,7 +283,7 @@ const getSingleUser = async(req, res)=>{
 const UpdateUser = async (req, res) =>{
 	try{
 		const userId = req.params['id'];
-		const {email, password, first_name, last_name} = req.body;
+		const {email, password, full_name} = req.body;
 		const updatedUser = await userModel.findOneAndUpdate({_id:userId}, req.body,
 			{new:true, runValidators:true});
 		if(!updatedUser){
