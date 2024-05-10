@@ -29,7 +29,6 @@ const isLoggedIn = async (req, res, next) => {
 	next();
 };
 
-
 const isVerified = async (req, res, next) => {
 	try {
 		const user = req.user;

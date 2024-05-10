@@ -129,7 +129,6 @@ const registerAccount = async(req, res)=>{
 	}
 }; 
 
-
 const loginAccount = async (req, res) => {
 	try {
 		if (req.body.email) {
@@ -168,7 +167,6 @@ const loginAccount = async (req, res) => {
 	}
 };
 
-
 const verifyAccount = async (req, res) => {
 	try {
 		const user = await userModel.findOne({
@@ -190,6 +188,7 @@ const verifyAccount = async (req, res) => {
 		res.status(500).json({error: 'Server Error'});
 	}
 };
+
 const forgetPassword = async (req, res) =>{
     const {email} = req.body;
     try{

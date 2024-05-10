@@ -1,8 +1,6 @@
 const express = require('express')
 const { forgetPassword, updatePassword, getAllUser, getSingleUser, UpdateUser, deleteUser } = require('../Controller/auth')
 
-
-
 const router = express.Router()
 
 router.route("/reset").post(forgetPassword)
