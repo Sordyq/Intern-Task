@@ -7,7 +7,7 @@ const authRouter = require('./routes/authHandler');
 const cors = require('cors')
 const isLoggedIn = require('./middleware/auth')
 
-const port = process.env.port || 6000;
+const port = process.env.port || 9000;
 
 app.use(cors());
 app.use(express.json());
